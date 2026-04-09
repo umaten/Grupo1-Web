@@ -1,0 +1,33 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container {
+    height: 100vh;
+    display: grid;
+    grid-template-columns: 20% 1fr;
+    grid-template-rows: 2rem 1fr;
+    gap: 1px;
+    background-color: #ccc;
+    grid-template-areas: 
+    "topbar topbar"
+    "sidebar content";
+}
+
+.container > * {
+    background-color: whitesmoke;
+}
+
+.topbar {
+    grid-area: topbar;
+}
+
+.sidebar {
+    grid-area: sidebar;
+}
+
+.content {
+    grid-area: content;
+}
