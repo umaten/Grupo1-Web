@@ -75,7 +75,6 @@
   display: flex;
   gap: 1.5rem;
   align-items: center;
-  flex: 0 0 200px;
 }
 
 /* .header-search{
