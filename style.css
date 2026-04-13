@@ -259,7 +259,12 @@ header nav ul{
   background-color: #3A86FF;
 }
 
-
+.content {
+  padding: 2rem;
+  height: 100vh;
+  background-color: white;
+  overflow-y: auto;
+}
 
 .container.is-collapsed {
   /* Pasamos de 2 columnas a 1 sola columna que ocupa todo (1fr) */

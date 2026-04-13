@@ -4,13 +4,6 @@
     box-sizing: border-box;
 }
 
-.content {
-    padding: 2rem;
-    height: 100vh;
-    background-color: white;
-    overflow-y: auto;
-}
-
 .container-info ul {
     display: grid;
     grid-template-columns: repeat(
