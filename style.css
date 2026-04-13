@@ -154,6 +154,7 @@
   padding: 0.3rem 0; /* a los lados no va padding */
   min-width: 160px;
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+  z-index: 999;
 }
 
 .menu-container{
@@ -196,9 +197,6 @@ header button {
   border: none;
   padding: 0;              /* Quita el relleno extra del navegador */
   cursor: pointer;         /* Convierte el ratón en la manita al pasar por encima */
-  
-  /* LA MAGIA: Convertir el botón en un contenedor Flex 
-     elimina los espacios fantasma del SVG al instante */
   display: flex;           
   align-items: center;
   justify-content: center;
