@@ -1,0 +1,117 @@
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+.container-clientes {
+    width: 100%;
+    height: 100%;
+}
+
+.busqueda-container {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.barra-busqueda {
+    flex: 1; 
+    padding: 10px;
+    border-radius: 5px; 
+    border: 1px solid #ccc; 
+    font-size: 1rem;
+}
+
+button {
+    border: none;
+    border-radius: 5px; 
+    cursor: pointer; 
+    font-weight: bold;
+    color: white; 
+}
+
+.btn-buscar {
+    background-color: #215ca5; 
+    padding: 0 20px;
+}
+
+/* --- ESTILOS DE LA TABLA --- */
+.tabla-clientes {
+    border-collapse: collapse;
+    border: 1px solid rgb(140, 140, 140);
+    width: 100%;
+    text-align: left;
+}
+
+.tabla-clientes caption {
+    caption-side: top;
+    padding: 10px;
+    font-weight: bold;
+    border: 1px solid rgb(140, 140, 140);
+    font-size: 1.3rem;
+    text-align: start;
+}
+
+.clientes-head {
+    background-color: rgb(228, 240, 245);
+    border: 1px solid rgb(140, 140, 140);
+}
+
+.tabla-clientes th, 
+.tabla-clientes td {
+    padding: 1rem;
+    border-bottom: 1px solid #ddd;
+}
+
+
+.col-acciones {
+    text-align: center;
+}
+
+.btn-accion-eliminar {
+    background-color: #dc3545; 
+    padding: 5px 10px; 
+    border-radius: 3px;
+}
+
+
+.botones-pie {
+    display: flex;
+    justify-content: space-evenly;
+    padding: 15px 0;
+}
+
+.btn-agregar {
+    background-color: #28a745; 
+    width: 45%; 
+    padding: 15px;
+}
+
+.btn-eliminar {
+    background-color: #dc3545;
+    width: 45%; 
+    padding: 15px;
+}
+
+.btn-accion-editar {
+    background-color: #ffc107; 
+    color: #333; 
+    padding: 6px 12px; 
+    border-radius: 4px;
+    
+    display: inline-flex; 
+    align-items: center;
+    justify-content: center;
+    transition: background-color 0.3s;
+}
+
+.btn-accion-editar:hover {
+    background-color: #e0a800;
+}
+
+.btn-accion-editar svg {
+    width: 18px; 
+    height: 18px;
+}
