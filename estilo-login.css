@@ -14,7 +14,7 @@
         
         padding: 30px;
         background-color: #ffffffda;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1); /* Una sombra elegante */
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
         border-radius: 30px;
     }
     form {
@@ -56,6 +56,6 @@
     text-decoration: none;
     color: #2f2f2f;
     font-weight: bold;
-    display: block; /* Hace que toda la fila sea clickeable, no solo el texto */
+    display: block;
     border-radius: 5px;
     }
