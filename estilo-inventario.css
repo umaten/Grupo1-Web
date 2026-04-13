@@ -1,63 +1,74 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
 .container-products {
-    width: 100%;
-    height: 100%;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+    font-family: Arial, sans-serif;
 }
 
 .container-products table {
-    border-collapse: collapse;
-    border: 1px solid rgb(140 140 140);
-    font-size: var(--text-size-primary);
     width: 100%;
+    border-collapse: collapse;
 }
 
-.container-products table th, td{
-    text-align: left;
-}
-
-.container-products table caption {
-    caption-side: top;
-    padding: 10px;
+caption {
+    font-size: 1.4rem;
     font-weight: bold;
-    border: 1px solid rgb(140 140 140);
-    font-size: var(--text-size-large);
-    text-align: start;
+    padding-bottom: 15px;
+    text-align: left;
+    color: #333;
 }
 
-.products-head {
-    border: 1px solid rgb(140 140 140);
-    background-color: rgb(228 240 245);
+.products-head th {
+    background-color: #f4f4f4;
+    padding: 12px;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    font-size: 0.9rem;
+    color: #555;
 }
 
-.container-products th, td {
-    padding: 1rem 1rem;
+.products-body th,
+.products-body td {
+    padding: 10px 12px;
+    border-bottom: 1px solid #eee;
+    font-size: 0.9rem;
 }
 
-.products-foot {
-    border: 1px solid rgb(140 140 140);
-    height: 6rem;
+.products-body tr:hover {
+    background-color: #fafafa;
 }
 
-.products-foot tr th {
-    text-align: start;
+.products-body th {
+    color: #2980b9;
+    font-weight: 600;
+}
+
+.products-foot th {
+    padding: 15px 10px;
+    background-color: #fdfdfd;
+    font-weight: normal;
+    color: #666;
+    font-size: 0.85rem;
 }
 
 .products-foot-button div {
     display: flex;
-    justify-content: space-evenly;
+    gap: 8px;
+    justify-content: flex-end;
 }
 
 .products-foot-button button {
-    background-color: #215ca5;
-    padding: 0.5rem 0.5rem;
-    height: 3rem;
-    font-size: 1em;
-    text-align: center;
-    border: none;
-    color: white;
+    padding: 6px 12px;
+    border: 1px solid #d1d1d1;
+    border-radius: 4px;
+    background: #fff;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.products-foot-button button:hover {
+    background-color: #2980b9;
+    color: #fff;
+    border-color: #2980b9;
 }
