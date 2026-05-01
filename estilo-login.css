@@ -1,59 +1,61 @@
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #dadcdd;
+    height: 100vh;
 }
-    body{
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        background-color: #dadcdd;
-        height: 100vh;
-    }
-    .carta{
-        min-width: 22%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 30px;
-        background-color: #ffffffda;
-        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-        border-radius: 30px;
-    }
-    form {
-        width: 100%;
-        display: flex;
-        flex-direction: column;
-        text-align: center;
-        gap: 20px;
-    }
-    form input{
-        padding: 6px;
-        border-radius: 15px;
-    }
-    form button{
-        padding: 15px;
-        cursor: pointer;
-        color: #ffffff;
-        background-color: #227aff;
-        border-radius: 20px;
-        transition: background-color ease  0.5s;;
-    }
-    form p{
-        border-radius: 30px;
-        background-color: #6e696934;
-        padding: 10px;
-    }
-    form button:hover{
-        background-color: #1551ac;
-        color: rgb(208, 203, 203);
-    }
-    img{
-        width: 100%;
-        margin-bottom: 15px;
-    }
 
-    button a{
+.carta {
+    min-width: 22%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    background-color: #ffffffda;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border-radius: 30px;
+}
+
+form{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+}
+
+form input{
+    padding: 6px;
+    border-radius: 15px;
+}
+
+form button{
+    padding: 15px;
+    cursor: pointer;
+    color: #ffffff;
+    background-color: #227aff;
+    border-radius: 20px;
+    transition: background-color ease  0.5s;;
+}
+
+form p{
+    border-radius: 30px;
+    background-color: #6e696934;
+    padding: 10px;
+}
+
+form button:hover{
+    background-color: #1551ac;
+    color: rgb(208, 203, 203);
+}
+
+img{
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+button a{
     text-decoration: none;
     color: #2f2f2f;
     font-weight: bold;

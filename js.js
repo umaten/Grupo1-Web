@@ -1,22 +1,25 @@
+let username;
+
 function colapsarSidebar() {
-  document.querySelector('.container').classList.toggle('is-collapsed');
+    document.querySelector('.container').classList.toggle('is-collapsed');
 }
 
 function desplegarMenu(event) {
-  event.stopPropagation();
-  document.querySelector('.perfil').classList.toggle('is-open');
+    event.stopPropagation();
+    document.querySelector('.perfil').classList.toggle('is-open');
 }
 
 document.addEventListener('click', function() {
-  document.querySelector('.perfil').classList.remove('is-open');
+    document.querySelector('.perfil').classList.remove('is-open');
 });
 
 const formulario = document.getElementById('formularioLogin');
 if (formulario) {
-  formulario.addEventListener('submit', function(evento) {
-    evento.preventDefault();
-    window.location.href = 'index.html';
-  });
+    formulario.addEventListener('submit', function(evento) {
+        evento.preventDefault();
+        username = document.getElementById('username').value.trim();
+        window.location.href = 'index.html';
+    });
 }
 
 document.querySelectorAll('.sidebar-button').forEach(boton => {
