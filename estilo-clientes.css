@@ -1,117 +1,93 @@
-
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-.container-clientes {
+.clients-wrapper {
     width: 100%;
-    height: 100%;
 }
 
-.busqueda-container {
+.clients-search-box {
     display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    gap: 1rem;
+    margin-bottom: 2rem;
 }
 
-.barra-busqueda {
-    flex: 1; 
-    padding: 10px;
-    border-radius: 5px; 
-    border: 1px solid #ccc; 
-    font-size: 1rem;
+.clients-input-main {
+    flex: 1;
+    padding: 0.8rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: var(--text-size-primary);
 }
 
-button {
+.clients-btn-search {
+    background-color: #555;
+    color: white;
     border: none;
-    border-radius: 5px; 
-    cursor: pointer; 
-    font-weight: bold;
-    color: white; 
+    padding: 0 2rem;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: var(--text-size-primary);
 }
 
-.btn-buscar {
-    background-color: #215ca5; 
-    padding: 0 20px;
-}
-
-/* --- ESTILOS DE LA TABLA --- */
-.tabla-clientes {
-    border-collapse: collapse;
-    border: 1px solid rgb(140, 140, 140);
+.clients-table {
     width: 100%;
-    text-align: left;
+    border-collapse: collapse;
 }
 
-.tabla-clientes caption {
-    caption-side: top;
-    padding: 10px;
+.clients-caption {
+    font-size: var(--text-size-large);
     font-weight: bold;
-    border: 1px solid rgb(140, 140, 140);
-    font-size: 1.3rem;
-    text-align: start;
+    text-align: left;
+    padding: 1rem 0;
+    color: midnightblue;
 }
 
-.clientes-head {
-    background-color: rgb(228, 240, 245);
-    border: 1px solid rgb(140, 140, 140);
+.clients-thead {
+    background-color: #f2f2f2;
 }
 
-.tabla-clientes th, 
-.tabla-clientes td {
+.clients-thead th {
     padding: 1rem;
-    border-bottom: 1px solid #ddd;
+    text-align: left;
+    border-bottom: 2px solid #ddd;
+    font-size: var(--text-size-primary);
 }
 
-
-.col-acciones {
-    text-align: center;
+.clients-tbody td {
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+    font-size: var(--text-size-primary);
 }
 
-.btn-accion-eliminar {
-    background-color: #dc3545; 
-    padding: 5px 10px; 
-    border-radius: 3px;
-}
-
-
-.botones-pie {
-    display: flex;
-    justify-content: space-evenly;
-    padding: 15px 0;
-}
-
-.btn-agregar {
-    background-color: #28a745; 
-    width: 45%; 
-    padding: 15px;
-}
-
-.btn-eliminar {
-    background-color: #dc3545;
-    width: 45%; 
-    padding: 15px;
-}
-
-.btn-accion-editar {
-    background-color: #ffc107; 
-    color: #333; 
-    padding: 6px 12px; 
+.clients-btn-edit {
+    background: #f8f9fa;
+    border: 1px solid #ddd;
+    padding: 6px;
     border-radius: 4px;
-    
-    display: inline-flex; 
-    align-items: center;
-    justify-content: center;
-    transition: background-color 0.3s;
+    cursor: pointer;
+    display: inline-flex;
 }
 
-.btn-accion-editar:hover {
-    background-color: #e0a800;
+.clients-btn-edit svg {
+    width: 1.2rem;
+    height: 1.2rem;
+    fill: midnightblue;
 }
 
-.btn-accion-editar svg {
-    width: 18px; 
-    height: 18px;
+.clients-footer-btns {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    padding: 2rem 0;
 }
+
+.clients-footer-btns button {
+    padding: 0.8rem 1.5rem;
+    border: none;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+    color: white;
+    font-size: var(--text-size-primary);
+}
+
+.clients-btn-add { background-color: #28a745; }
+.clients-btn-del { background-color: #dc3545; }
+.clients-txt-center { text-align: center; }
