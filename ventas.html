@@ -1,67 +1,47 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-    <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="estilo-inicio.css">
-    <link rel="stylesheet" href="estilo-inventario.css">
-</head>
-<body>
-    <div class="container-products">
-    
-    <div style="display: flex; gap: 10px; margin-bottom: 20px;">
-        <input type="text" placeholder="Código o Nombre del producto..." style="flex: 1; padding: 10px; border-radius: 5px; border: 1px solid #ccc; font-size: 1rem;">
-        <input type="number" placeholder="Cant." value="1" style="width: 80px; padding: 10px; border-radius: 5px; border: 1px solid #ccc;">
-        <button style="background-color: #215ca5; color: white; border: none; padding: 0 20px; border-radius: 5px; cursor: pointer; font-weight: bold;">AGREGAR</button>
+<div class="sales-wrapper">
+    <div class="sales-search-group">
+        <input type="text" class="sales-input-main" placeholder="Código o Nombre del producto..." aria-label="Producto">
+        <input type="number" class="sales-input-qty" value="1" aria-label="Cantidad">
+        <button class="sales-btn-add">AGREGAR</button>
     </div>
 
-    <table>
-        <caption>Caja - Nueva Venta (BodeSmart)</caption>
-        <thead class="products-head">
-            <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Cantidad</th>
-                <th>Precio Unit.</th>
-                <th>Subtotal</th>
-                <th style="text-align: center;">ELIMINAR</th>
-            </tr>
+    <table class="sales-table">
+        <caption class="sales-table-title">Caja - Nueva Venta (BodeSmart)</caption>
+        <thead class="sales-thead">
+        <tr>
+            <th>Código</th>
+            <th>Producto</th>
+            <th>Cantidad</th>
+            <th>Precio Unit.</th>
+            <th>Subtotal</th>
+            <th class="sales-txt-center">ELIMINAR</th>
+        </tr>
         </thead>
-        <tbody>
-            <tr>
-                <td>ABR-001</td>
-                <td>Arroz Costeño (1 Kg)</td>
-                <td>1</td>
-                <td>S/ 3.50</td>
-                <td>S/ 3.50</td>
-                <td style="text-align: center;"><button style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">X</button></td>
-            </tr>
-            <tr>
-                <td>LAC-045</td>
-                <td>Leche Evaporada Gloria</td>
-                <td>2</td>
-                <td>S/ 4.00</td>
-                <td>S/ 8.00</td>
-                <td style="text-align: center;"><button style="background-color: #dc3545; color: white; border: none; padding: 5px 10px; border-radius: 3px; cursor: pointer;">X</button></td>
-            </tr>
+        <tbody class="sales-tbody">
+        <tr>
+            <td>ABR-001</td>
+            <td>Arroz Costeño (1 Kg)</td>
+            <td>1</td>
+            <td>S/ 3.50</td>
+            <td>S/ 3.50</td>
+            <td class="sales-txt-center">
+                <button class="sales-btn-remove" title="Eliminar fila">X</button>
+            </td>
+        </tr>
         </tbody>
-        <tfoot class="products-foot">
-            <tr>
-                <th colspan="4" style="text-align: right; font-size: 1.2rem;">TOTAL A PAGAR:</th>
-                <th colspan="2" style="font-size: 1.2rem; color: #215ca5;">S/ 11.50</th>
-            </tr>
-            <tr class="products-foot-button">
-                <td colspan="6">
-                    <div>
-                        <button style="background-color: #28a745; width: 45%; border-radius: 5px; cursor: pointer; font-weight: bold;">✅ CONFIRMAR VENTA</button>
-                        <button style="background-color: #dc3545; width: 45%; border-radius: 5px; cursor: pointer; font-weight: bold;">🗑️ CANCELAR</button>
-                    </div>
-                </td>
-            </tr>
+        <tfoot class="sales-tfoot">
+        <tr class="sales-row-total">
+            <th colspan="4" class="sales-txt-right">TOTAL A PAGAR:</th>
+            <th colspan="2" class="sales-total-price">S/ 11.50</th>
+        </tr>
+        <tr class="sales-footer-actions">
+            <td colspan="6">
+                <div class="sales-action-container">
+                    <button class="sales-btn-submit">✅ CONFIRMAR VENTA</button>
+                    <button class="sales-btn-abort">🗑️ CANCELAR</button>
+                </div>
+            </td>
+        </tr>
         </tfoot>
     </table>
 </div>
-</body>
-</html>
