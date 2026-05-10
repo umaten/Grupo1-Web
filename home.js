@@ -1,3 +1,9 @@
+import { initSupplier } from './supplier.js';
+
+const modulos = {
+    "proveedores": initSupplier
+};
+
 document.addEventListener('DOMContentLoaded', () => {
     const usuarioGuardado = localStorage.getItem('usuarioActivo');
     const displayNombre = document.getElementById('userName');
@@ -7,25 +13,44 @@ document.addEventListener('DOMContentLoaded', () => {
     } else if (!usuarioGuardado) {
         window.location.href = 'login.html';
     }
+
+    const botones = document.querySelectorAll('.sidebar-button');
+
+    botones.forEach(boton => {
+        boton.onclick = () => {
+            const nombrePanel = boton.innerText.trim().toLowerCase();
+
+            fetch(`${nombrePanel}.html`)
+                .then(res => {
+                    if (!res.ok) throw new Error();
+                    return res.text();
+                })
+                .then(html => {
+                    const content = document.querySelector('.content');
+                    if (content) {
+                        content.innerHTML = html;
+                        if (modulos[nombrePanel]) {
+                            modulos[nombrePanel]();
+                        }
+                    }
+                })
+                .catch(err => console.error("Error cargando panel:", nombrePanel));
+        };
+    });
 });
 
-function colapsarSidebar() {
-    document.querySelector('.container').classList.toggle('is-collapsed');
-}
+window.colapsarSidebar = () => {
+    const container = document.querySelector('.container');
+    if (container) container.classList.toggle('is-collapsed');
+};
 
-function desplegarMenu(event) {
-    event.stopPropagation();
-    document.querySelector('.perfil').classList.toggle('is-open');
-}
+window.desplegarMenu = (event) => {
+    if (event) event.stopPropagation();
+    const perfil = document.querySelector('.perfil');
+    if (perfil) perfil.classList.toggle('is-open');
+};
 
-document.addEventListener('click', function() {
-    document.querySelector('.perfil').classList.remove('is-open');
-});
-
-document.querySelectorAll('.sidebar-button').forEach(boton => {
-    boton.onclick = () => {
-        fetch(boton.innerText.toLowerCase() + '.html')
-            .then(res => res.text())
-            .then(html => document.querySelector('.content').innerHTML = html);
-    };
+document.addEventListener('click', () => {
+    const perfil = document.querySelector('.perfil');
+    if (perfil) perfil.classList.remove('is-open');
 });
