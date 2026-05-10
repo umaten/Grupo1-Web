@@ -1,80 +1,89 @@
-<section class="reporte-proveedores">
-    <div class="proveedores-header">
-        <div>
+<section class="modulo-gestion-prov">
+    <div class="prov-header-flex">
+        <div class="prov-title-group">
             <h2>Gestión de Proveedores</h2>
-            <p style="color: #667085; margin: 5px 0 0;">Cuentas por pagar y entregas pendientes</p>
+            <p>Control de deudas y órdenes de suministro</p>
         </div>
-        <div>
-            <button style="background: #101828; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">
-                + Nuevo Pedido
-            </button>
-            <button style="background: #101828; color: white; border: none; padding: 8px 16px; border-radius: 6px; cursor: pointer;">
-                + Nuevo Proveedor
-            </button>
+        <button class="btn-prov-add" popovertarget="modalRegistrar">+ Registrar Proveedor</button>
+    </div>
+
+    <div class="prov-grid-info">
+        <div class="prov-card">
+            <span class="prov-card-label">Activos</span>
+            <span class="prov-card-value" id="count-prov">0</span>
+        </div>
+        <div class="prov-card">
+            <span class="prov-card-label">Deuda Total</span>
+            <span class="prov-card-value" id="sum-deuda">$0.00</span>
         </div>
     </div>
 
-    <div class="metricas-proveedores">
-        <div class="metrica-item">
-            <span class="metrica-label">Proveedores Activos</span>
-            <span class="metrica-valor">12</span>
-        </div>
-        <div class="metrica-item">
-            <span class="metrica-label">Deuda Total</span>
-            <span class="metrica-valor">$1,420.50</span>
-        </div>
-        <div class="metrica-item">
-            <span class="metrica-label">Próxima Entrega</span>
-            <span class="metrica-valor">Mañana (8:00 AM)</span>
+    <div class="prov-table-wrapper">
+        <table class="prov-tabla-data">
+            <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Fecha Orden</th>
+                <th>Estatus</th>
+                <th>Deuda</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="tbody-proveedores"></tbody>
+        </table>
+    </div>
+
+    <div class="prov-pagination">
+        <button id="prevPage" class="btn-action">Anterior</button>
+        <span id="pageDisplay">Página 1</span>
+        <button id="nextPage" class="btn-action">Siguiente</button>
+    </div>
+
+    <div id="modalRegistrar" popover class="prov-modal-box">
+        <div class="modal-content-wrapper">
+            <h3>Registrar Proveedor</h3>
+            <form id="formRegistrar">
+                <div class="prov-form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="supplierName" required>
+                </div>
+                <div class="modal-form-actions">
+                    <button type="button" class="btn-action" popovertarget="modalRegistrar" popovertargetaction="hide">Cancelar</button>
+                    <button type="submit" class="btn-prov-add">Guardar</button>
+                </div>
+            </form>
         </div>
     </div>
 
-    <table class="tabla-prov">
-        <thead>
-        <tr>
-            <th>Proveedor</th>
-            <th>Último Pedido</th>
-            <th>Estado de Pago</th>
-            <th>Saldo</th>
-        </tr>
-        </thead>
-        <tbody>
-        <tr>
-            <td class="proveedor-info">
-                <strong>Distribuidora "El Trigal"</strong>
-                <span>Panadería y Harinas</span>
-            </td>
-            <td>12 Abr 2026</td>
-            <td><span class="estado-deuda estado-pagado">Al día</span></td>
-            <td>$0.00</td>
-        </tr>
-        <tr>
-            <td class="proveedor-info">
-                <strong>Lácteos del Valle</strong>
-                <span>Yogures y Quesos</span>
-            </td>
-            <td>10 Abr 2026</td>
-            <td><span class="estado-deuda estado-pendiente">Pendiente</span></td>
-            <td>$450.00</td>
-        </tr>
-        <tr>
-            <td class="proveedor-info">
-                <strong>Bebidas Express</strong>
-                <span>Gaseosas y Aguas</span>
-            </td>
-            <td>08 Abr 2026</td>
-            <td><span class="estado-deuda estado-pagado">Al día</span></td>
-            <td>$0.00</td>
-        </tr>
-        <tr>
-            <td class="proveedor-info">
-                <strong>Frutas & Vida</strong>
-                <span>Frutas de temporada</span>
-            </td>
-            <td>13 Abr 2026</td>
-            <td><span class="estado-deuda estado-pendiente">Pendiente</span></td>
-            <td>$120.00</td>
-        </tr>
-        </tbody>
-    </table>
+    <div id="modalEditar" popover class="prov-modal-box">
+        <div class="modal-content-wrapper">
+            <h3>Editar Proveedor</h3>
+            <form id="formEditar">
+                <input type="hidden" name="id">
+                <div class="prov-form-group">
+                    <label>Nombre del Proveedor</label>
+                    <input type="text" name="supplierName" required>
+                </div>
+                <div class="prov-form-group">
+                    <label>Fecha del Último Pedido</label>
+                    <input type="date" name="dateLastOrder">
+                </div>
+                <div class="prov-form-group">
+                    <label>Estatus de Pago</label>
+                    <select name="paymentStatus">
+                        <option value="PENDING">PENDING</option>
+                        <option value="PAID">PAID</option>
+                    </select>
+                </div>
+                <div class="prov-form-group">
+                    <label>Deuda ($)</label>
+                    <input type="number" step="0.01" name="debt">
+                </div>
+                <div class="modal-form-actions">
+                    <button type="button" class="btn-action" popovertarget="modalEditar" popovertargetaction="hide">Cancelar</button>
+                    <button type="submit" class="btn-prov-add">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>

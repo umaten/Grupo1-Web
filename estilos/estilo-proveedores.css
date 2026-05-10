@@ -1,92 +1,301 @@
-.reporte-proveedores {
-    font-family: 'Inter', system-ui, sans-serif;
-    background: #ffffff;
-    border-radius: 10px;
-    border: 1px solid #eaecf0;
-    padding: 24px;
-    margin: 10px;
+.status-badge {
+    background: #e8f5e9;
+    color: #2e7d32;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.8rem;
+    font-weight: 700;
 }
 
-.proveedores-header {
+.modulo-gestion-prov {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.prov-header-flex {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-bottom: 25px;
+    margin-bottom: 2rem;
+    gap: 1rem;
+    flex-wrap: wrap;
 }
 
-.proveedores-header h2 {
-    color: #101828;
-    font-size: 1.5rem;
+.prov-title-group h2 {
     margin: 0;
+    font-size: 1.8rem;
+    color: #222;
+    font-weight: 600;
 }
 
-.metricas-proveedores {
+.prov-title-group p {
+    margin: 0.25rem 0 0 0;
+    font-size: 0.9rem;
+    color: #666;
+}
+
+.btn-prov-add {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 0.95rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.btn-prov-add:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(102, 126, 234, 0.4);
+}
+
+.btn-prov-add:active {
+    transform: translateY(0);
+}
+
+.prov-grid-info {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.prov-card {
+    background: #f8f9fa;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #667eea;
     display: flex;
-    gap: 20px;
-    margin-bottom: 30px;
+    flex-direction: column;
+    justify-content: center;
 }
 
-.metrica-item {
-    flex: 1;
-    padding: 15px;
-    background: #f9fafb;
-    border-radius: 8px;
-    border: 1px solid #f2f4f7;
-}
-
-.metrica-label {
-    display: block;
+.prov-card-label {
     font-size: 0.85rem;
-    color: #667085;
-    margin-bottom: 5px;
+    color: #666;
+    font-weight: 500;
+    margin-bottom: 0.5rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
 }
 
-.metrica-valor {
-    font-size: 1.25rem;
+.prov-card-value {
+    font-size: 1.8rem;
     font-weight: 700;
-    color: #344054;
+    color: #222;
 }
 
-.tabla-prov {
+.prov-table-wrapper {
+    overflow-x: auto;
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+
+.prov-tabla-data {
     width: 100%;
     border-collapse: collapse;
+    font-size: 0.95rem;
 }
 
-.tabla-prov th {
+.prov-tabla-data thead {
+    background: #f8f9fa;
+    border-bottom: 2px solid #e9ecef;
+}
+
+.prov-tabla-data th {
+    padding: 1rem;
     text-align: left;
-    font-size: 0.75rem;
-    color: #667085;
-    background: #f9fafb;
-    padding: 12px;
+    font-weight: 600;
+    color: #222;
     text-transform: uppercase;
-    letter-spacing: 0.05em;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
 }
 
-.tabla-prov td {
-    padding: 16px 12px;
-    border-bottom: 1px solid #eaecf0;
+.prov-tabla-data tbody tr {
+    border-bottom: 1px solid #e9ecef;
+    transition: background-color 0.2s;
+}
+
+.prov-tabla-data tbody tr:hover {
+    background-color: #f8f9fa;
+}
+
+.prov-tabla-data td {
+    padding: 1rem;
+    color: #444;
+}
+
+.action-btns {
+    display: flex;
+    gap: 0.5rem;
+    justify-content: flex-start;
+}
+
+.btn-action {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.35rem;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.btn-action.edit {
+    background: #e3f2fd;
+    color: #1976d2;
+}
+
+.btn-action.edit:hover {
+    background: #bbdefb;
+}
+
+.btn-action.delete {
+    background: #ffebee;
+    color: #c62828;
+}
+
+.btn-action.delete:hover {
+    background: #ffcdd2;
+}
+
+.prov-modal-box {
+    inset: 0;
+    margin: auto;
+    padding: 0;
+    border-radius: 0.5rem;
+    background: transparent;
+    border: none;
+    max-width: 450px;
+    width: 90%;
+    height: fit-content;
+}
+
+.prov-modal-box::backdrop {
+    background: rgba(0, 0, 0, 0.5);
+}
+
+.modal-content-wrapper {
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.3);
+    background: white;
+}
+
+.modal-content-wrapper h3 {
+    margin: 0 0 1.5rem 0;
+    font-size: 1.4rem;
+    color: #222;
+    font-weight: 600;
+}
+
+#formProv {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.prov-form-group {
+    display: flex;
+    flex-direction: column;
+}
+
+.prov-form-group label {
     font-size: 0.9rem;
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 0.5rem;
 }
 
-.estado-deuda {
-    display: inline-block;
-    padding: 2px 10px;
-    border-radius: 12px;
-    font-size: 0.8rem;
-    font-weight: 500;
+.prov-form-group input,
+.prov-form-group select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.35rem;
+    font-size: 0.95rem;
+    font-family: inherit;
+    transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-.estado-pagado { background: #ecfdf3;
-    color: #027a48; }
-.estado-pendiente { background: #fef3f2;
-    color: #b42318; }
-
-.proveedor-info strong {
-    display: block;
-    color: #101828;
+.prov-form-group input:focus,
+.prov-form-group select:focus {
+    outline: none;
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
 }
 
-.proveedor-info span {
-    font-size: 0.8rem;
-    color: #667085;
+.modal-form-actions {
+    display: flex;
+    gap: 0.75rem;
+    justify-content: flex-end;
+    margin-top: 1rem;
+}
+
+.modal-form-actions .btn-action {
+    background: #e9ecef;
+    color: #333;
+    flex: 1;
+}
+
+.modal-form-actions .btn-action:hover {
+    background: #dee2e6;
+}
+
+.prov-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 1.5rem;
+}
+
+.prov-pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+@media (max-width: 768px) {
+    .modulo-gestion-prov {
+        padding: 1rem;
+    }
+
+    .prov-header-flex {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .btn-prov-add {
+        width: 100%;
+    }
+
+    .prov-grid-info {
+        grid-template-columns: 1fr;
+    }
+
+    .prov-tabla-data {
+        font-size: 0.85rem;
+    }
+
+    .prov-tabla-data th,
+    .prov-tabla-data td {
+        padding: 0.75rem;
+    }
+
+    .action-btns {
+        flex-direction: column;
+    }
+
+    .btn-action {
+        width: 100%;
+    }
+
+    .prov-modal-box {
+        width: 95%;
+        padding: 1.5rem;
+    }
 }
