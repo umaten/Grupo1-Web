@@ -1,93 +1,162 @@
-.clients-wrapper {
-    width: 100%;
+.modulo-gestion-cust {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
-.clients-search-box {
+.cust-header-flex {
     display: flex;
-    gap: 1rem;
+    justify-content: space-between;
+    align-items: center;
     margin-bottom: 2rem;
+    gap: 1rem;
 }
 
-.clients-input-main {
-    flex: 1;
-    padding: 0.8rem;
-    border: 1px solid #ddd;
-    border-radius: 6px;
-    font-size: var(--text-size-primary);
-}
-
-.clients-btn-search {
-    background-color: #555;
+.btn-cust-add {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     color: white;
     border: none;
-    padding: 0 2rem;
-    border-radius: 6px;
+    border-radius: 0.5rem;
+    font-weight: 600;
     cursor: pointer;
-    font-size: var(--text-size-primary);
 }
 
-.clients-table {
+.cust-card {
+    background: #f0f7ff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #4facfe;
+    width: fit-content;
+    min-width: 200px;
+}
+
+.cust-table-wrapper {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+    margin-top: 2rem;
+}
+
+.cust-tabla-data {
     width: 100%;
     border-collapse: collapse;
 }
 
-.clients-caption {
-    font-size: var(--text-size-large);
-    font-weight: bold;
-    text-align: left;
-    padding: 1rem 0;
-    color: midnightblue;
-}
-
-.clients-thead {
-    background-color: #f2f2f2;
-}
-
-.clients-thead th {
+.cust-tabla-data th, .cust-tabla-data td {
     padding: 1rem;
     text-align: left;
-    border-bottom: 2px solid #ddd;
-    font-size: var(--text-size-primary);
-}
-
-.clients-tbody td {
-    padding: 1rem;
     border-bottom: 1px solid #eee;
-    font-size: var(--text-size-primary);
 }
 
-.clients-btn-edit {
-    background: #f8f9fa;
-    border: 1px solid #ddd;
-    padding: 6px;
-    border-radius: 4px;
+.cust-action-btns {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-cust-action {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.35rem;
     cursor: pointer;
-    display: inline-flex;
+    font-size: 0.85rem;
 }
 
-.clients-btn-edit svg {
-    width: 1.2rem;
-    height: 1.2rem;
-    fill: midnightblue;
+.btn-cust-action.edit { background: #e3f2fd; color: #1976d2; }
+.btn-cust-action.delete { background: #ffebee; color: #c62828; }
+
+.cust-modal-box {
+    inset: 0;
+    margin: auto;
+    border: none;
+    background: transparent;
 }
 
-.clients-footer-btns {
+.cust-modal-wrapper {
+    background: white;
+    padding: 2rem;
+    border-radius: 0.8rem;
+    width: 400px;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+}
+
+.cust-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.cust-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+.cust-modal-box {
+    border: none;
+    padding: 0;
+    background: transparent;
+    overflow: visible;
+}
+
+.cust-modal-box::backdrop {
+    background-color: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+}
+
+.cust-modal-wrapper {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    width: 450px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.2);
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.cust-modal-wrapper h3 {
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+    color: #333;
+    font-size: 1.5rem;
+}
+
+.cust-form-group label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #555;
+    font-size: 0.9rem;
+}
+
+.cust-form-group input {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    margin-bottom: 1.25rem;
+    font-size: 1rem;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.cust-form-group input:focus {
+    border-color: #4facfe;
+}
+
+.cust-modal-actions {
     display: flex;
     justify-content: flex-end;
     gap: 1rem;
-    padding: 2rem 0;
+    margin-top: 1rem;
 }
 
-.clients-footer-btns button {
-    padding: 0.8rem 1.5rem;
-    border: none;
-    border-radius: 6px;
-    font-weight: bold;
-    cursor: pointer;
-    color: white;
-    font-size: var(--text-size-primary);
+.btn-cust-action.close {
+    background: #f5f5f5;
+    color: #666;
 }
 
-.clients-btn-add { background-color: #28a745; }
-.clients-btn-del { background-color: #dc3545; }
-.clients-txt-center { text-align: center; }
+.btn-cust-action.close:hover {
+    background: #eee;
+}

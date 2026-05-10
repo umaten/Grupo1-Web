@@ -1,38 +1,76 @@
-<div class="clients-wrapper">
-    <div class="clients-search-box">
-        <input type="text" class="clients-input-main" placeholder="Código o Nombre del CLIENTE..." aria-label="Buscar cliente">
-        <button class="clients-btn-search">BUSCAR</button>
+<section class="modulo-gestion-cust">
+    <div class="cust-header-flex">
+        <div class="cust-title-group">
+            <h2>Gestión de Clientes</h2>
+            <p>Listado y administración de clientes registrados</p>
+        </div>
+        <button class="btn-cust-add" popovertarget="modalRegistrarCust">+ Registrar Cliente</button>
     </div>
 
-    <table class="clients-table">
-        <caption class="clients-caption">Clientes Registrados (BodeSmart)</caption>
-        <thead class="clients-thead">
-        <tr>
-            <th>Código</th>
-            <th>Nombre del Cliente</th>
-            <th class="clients-txt-center">EDITAR</th>
-        </tr>
-        </thead>
-        <tbody class="clients-tbody">
-        <tr>
-            <td>ABR-001</td>
-            <td>Carlos Espa</td>
-            <td class="clients-txt-center">
-                <button class="clients-btn-edit" title="Editar Cliente">
-                    <svg viewBox="0 -960 960 960"><path d="M200-200h57l391-391-57-57-391 391v57Zm-80 80v-170l528-527q12-11 26.5-17t30.5-6q16 0 31 6t26 18l55 56q12 11 17.5 26t5.5 30q0 16-5.5 30.5T817-647L290-120H120Zm640-584-56-56 56 56Zm-141 85-28-29 57 57-29-28Z"/></svg>
-                </button>
-            </td>
-        </tr>
-        </tbody>
-        <tfoot class="clients-tfoot">
-        <tr>
-            <td colspan="3">
-                <div class="clients-footer-btns">
-                    <button class="clients-btn-add">AGREGAR CLIENTE</button>
-                    <button class="clients-btn-del">ELIMINAR CLIENTE</button>
+    <div class="cust-grid-info">
+        <div class="cust-card">
+            <span class="cust-card-label">Total Clientes</span>
+            <span class="cust-card-value" id="count-cust">0</span>
+        </div>
+    </div>
+
+    <div class="cust-table-wrapper">
+        <table class="cust-tabla-data">
+            <thead>
+            <tr>
+                <th>Código</th>
+                <th>Nombre Completo</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="tbody-clientes"></tbody>
+        </table>
+    </div>
+
+    <div class="cust-pagination">
+        <button id="prevPageCust" class="btn-cust-action">Anterior</button>
+        <span id="pageDisplayCust">Página 1</span>
+        <button id="nextPageCust" class="btn-cust-action">Siguiente</button>
+    </div>
+
+    <div id="modalRegistrarCust" popover class="cust-modal-box">
+        <div class="cust-modal-wrapper">
+            <h3>Registrar Cliente</h3>
+            <form id="formRegistrarCust">
+                <div class="cust-form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="firstName" required>
                 </div>
-            </td>
-        </tr>
-        </tfoot>
-    </table>
-</div>
+                <div class="cust-form-group">
+                    <label>Apellido</label>
+                    <input type="text" name="lastName" required>
+                </div>
+                <div class="cust-modal-actions">
+                    <button type="button" class="btn-cust-action close" popovertarget="modalRegistrarCust" popovertargetaction="hide">Cancelar</button>
+                    <button type="submit" class="btn-cust-add">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalEditarCust" popover class="cust-modal-box">
+        <div class="cust-modal-wrapper">
+            <h3>Editar Cliente</h3>
+            <form id="formEditarCust">
+                <input type="hidden" name="id">
+                <div class="cust-form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="firstName" required>
+                </div>
+                <div class="cust-form-group">
+                    <label>Apellido</label>
+                    <input type="text" name="lastName" required>
+                </div>
+                <div class="cust-modal-actions">
+                    <button type="button" class="btn-cust-action close" popovertarget="modalEditarCust" popovertargetaction="hide">Cancelar</button>
+                    <button type="submit" class="btn-cust-add">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
