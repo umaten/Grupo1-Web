@@ -14,6 +14,20 @@ export function initInventory() {
     const formEditar = document.getElementById('formEditarInv');
     if (formEditar) formEditar.onsubmit = actualizarProducto;
 
+    const inputSearch = document.getElementById('inputSearchInv');
+    const btnSearch = document.getElementById('btnSearchInv');
+
+    if (btnSearch) {
+        btnSearch.onclick = () => buscarProductos(inputSearch.value);
+    }
+
+    if (inputSearch) {
+        inputSearch.onkeyup = (e) => {
+            if (e.key === 'Enter') buscarProductos(inputSearch.value);
+            if (inputSearch.value === "") listarProductos();
+        };
+    }
+
     document.getElementById('prevPageInv').onclick = () => cambiarPagina(-1);
     document.getElementById('nextPageInv').onclick = () => cambiarPagina(1);
 }
@@ -25,8 +39,7 @@ async function cargarProveedoresEnSelects() {
         const selects = document.querySelectorAll('.select-suppliers');
 
         selects.forEach(select => {
-            const defaultValue = select.innerHTML;
-            select.innerHTML = defaultValue;
+            select.innerHTML = '<option value="">Seleccione proveedor</option>';
             proveedores.forEach(p => {
                 const option = document.createElement('option');
                 option.value = p.id;
@@ -43,14 +56,33 @@ async function listarProductos() {
     try {
         const res = await fetch(URL_PRODUCTOS);
         productosData = await res.json();
-
-        const countElem = document.getElementById('count-inv');
-        if (countElem) countElem.textContent = productosData.length;
-
-        renderizarTabla();
+        actualizarVista();
     } catch (e) {
         console.error(e);
     }
+}
+
+async function buscarProductos(termino) {
+    if (!termino.trim()) {
+        listarProductos();
+        return;
+    }
+    try {
+        const res = await fetch(`${URL_PRODUCTOS}/search?term=${encodeURIComponent(termino)}`);
+        if (res.ok) {
+            productosData = await res.json();
+            paginaActual = 1;
+            actualizarVista();
+        }
+    } catch (e) {
+        console.error("Error en búsqueda:", e);
+    }
+}
+
+function actualizarVista() {
+    const countElem = document.getElementById('count-inv');
+    if (countElem) countElem.textContent = productosData.length;
+    renderizarTabla();
 }
 
 function renderizarTabla() {
