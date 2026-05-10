@@ -1,36 +1,45 @@
 const loginForm = document.getElementById('formularioLogin');
+const errorDiv = document.getElementById('login-error');
+
+function mostrarError(mensaje) {
+    errorDiv.textContent = mensaje;
+    errorDiv.classList.add('visible');
+}
+
+function limpiarError() {
+    errorDiv.textContent = '';
+    errorDiv.classList.remove('visible');
+}
 
 loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
+    limpiarError();
 
-    const username = document.getElementById('username').value;
-    const password = document.getElementById('password').value;
+    const username = document.getElementById('username').value.trim();
+    const password = document.getElementById('password').value.trim();
 
-    const loginData = {
-        username: username,
-        password: password
+    if (!username || !password) {
+        mostrarError('Por favor completa todos los campos.');
+        return;
     }
 
     try {
         const response = await fetch('http://localhost:8080/auth', {
             method: 'POST',
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(loginData)
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password })
         });
 
         if (response.ok) {
             const data = await response.json();
-
             localStorage.setItem('usuarioActivo', data.username);
-
             window.location.href = 'home.html';
+        } else if (response.status === 401) {
+            mostrarError('Usuario o contraseña incorrectos.');
         } else {
-            alert("Error: Usuario o contraseña incorrectos");
+            mostrarError(`Error del servidor (${response.status}). Intenta de nuevo.`);
         }
     } catch (error) {
-        console.error("No se pudo conectar con el servidor:", error);
-        alert("El servidor de Java no responde.");
+        mostrarError('No se pudo conectar con el servidor. Verifica que el backend esté encendido.');
     }
-})
+});

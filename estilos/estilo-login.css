@@ -67,3 +67,18 @@ button a{
     display: flex;
     justify-content: space-between;
 }
+
+.login-error-msg {
+    display: none;
+    background-color: #fde8e8;
+    color: #c0392b;
+    border: 1px solid #e74c3c;
+    border-radius: 8px;
+    padding: 10px 14px;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
+.login-error-msg.visible {
+    display: block;
+}
