@@ -16,7 +16,7 @@ export async function initDashboard() {
         const customers = await rC.json();
         const users = await rU.json();
 
-        const invVal = products.reduce((a, p) => a + (p.purchasePrice * p.stock), 0);
+        const invVal = products.reduce((a, p) => a + (p.salePrice * p.stock), 0);
         const debtVal = suppliers.reduce((a, s) => a + (s.debt || 0), 0);
         const lowStock = products.filter(p => p.stock < 5).length;
         const inArrears = suppliers.filter(s => s.debt > 0).length;
