@@ -1,18 +1,13 @@
-const formulario = document.getElementById('formularioLogin');
-if (formulario) {
-    formulario.addEventListener('submit', function(evento) {
-        evento.preventDefault();
-        const inputUserName = document.getElementById('input-user-name').value.trim();
-        sessionStorage.setItem('username', inputUserName);
-        window.location.href = 'index.html';
-    });
-}
-
 document.addEventListener('DOMContentLoaded', () => {
-    const saveName = sessionStorage.getItem('username');
-    const userName = document.getElementById('userName');
-    userName.textContent = saveName;
-})
+    const usuarioGuardado = localStorage.getItem('usuarioActivo');
+    const displayNombre = document.getElementById('userName');
+
+    if (usuarioGuardado && displayNombre) {
+        displayNombre.textContent = usuarioGuardado;
+    } else if (!usuarioGuardado) {
+        window.location.href = 'login.html';
+    }
+});
 
 function colapsarSidebar() {
     document.querySelector('.container').classList.toggle('is-collapsed');
