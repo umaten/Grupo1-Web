@@ -1,0 +1,125 @@
+.modulo-gestion-usr {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.usr-header-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 2rem;
+}
+
+.btn-usr-add {
+    padding: 0.75rem 1.5rem;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+}
+
+.usr-card {
+    background: #f8f9ff;
+    padding: 1.5rem;
+    border-radius: 0.5rem;
+    border-left: 4px solid #667eea;
+    width: fit-content;
+    min-width: 200px;
+}
+
+.usr-table-wrapper {
+    background: white;
+    border-radius: 0.5rem;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+    margin-top: 2rem;
+}
+
+.usr-tabla-data {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.usr-tabla-data th, .usr-tabla-data td {
+    padding: 1rem;
+    text-align: left;
+    border-bottom: 1px solid #eee;
+}
+
+.role-badge {
+    background: #f0f0f0;
+    padding: 0.25rem 0.6rem;
+    border-radius: 1rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+}
+
+.usr-action-btns {
+    display: flex;
+    gap: 0.5rem;
+}
+
+.btn-usr-action {
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 0.35rem;
+    cursor: pointer;
+    font-size: 0.85rem;
+}
+
+.btn-usr-action.edit { background: #e8eaf6; color: #3f51b5; }
+.btn-usr-action.delete { background: #ffebee; color: #c62828; }
+.btn-usr-action.close { background: #f5f5f5; color: #666; }
+
+.usr-modal-box {
+    border: none;
+    padding: 0;
+    background: transparent;
+}
+
+.usr-modal-box::backdrop {
+    background-color: rgba(0, 0, 0, 0.4);
+    backdrop-filter: blur(3px);
+}
+
+.usr-modal-wrapper {
+    background: white;
+    padding: 2.5rem;
+    border-radius: 1rem;
+    width: 450px;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.usr-form-group {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 1rem;
+}
+
+.usr-form-group input, .usr-form-group select {
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 0.5rem;
+    margin-top: 0.25rem;
+}
+
+.usr-modal-actions {
+    display: flex;
+    justify-content: flex-end;
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+.usr-pagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1.5rem;
+    margin-top: 2rem;
+}

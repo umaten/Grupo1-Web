@@ -1,0 +1,108 @@
+<section class="modulo-gestion-usr">
+    <div class="usr-header-flex">
+        <div class="usr-title-group">
+            <h2>Gestión de Usuarios</h2>
+            <p>Administración de vendedores y roles del sistema</p>
+        </div>
+        <button class="btn-usr-add" popovertarget="modalRegistrarUsr">+ Nuevo Usuario</button>
+    </div>
+
+    <div class="usr-grid-info">
+        <div class="usr-card">
+            <span class="usr-card-label">Usuarios Activos</span>
+            <span class="usr-card-value" id="count-usr">0</span>
+        </div>
+    </div>
+
+    <div class="usr-table-wrapper">
+        <table class="usr-tabla-data">
+            <thead>
+            <tr>
+                <th>Username</th>
+                <th>Email</th>
+                <th>Nombre</th>
+                <th>Rol</th>
+                <th>Acciones</th>
+            </tr>
+            </thead>
+            <tbody id="tbody-usuarios"></tbody>
+        </table>
+    </div>
+
+    <div class="usr-pagination">
+        <button id="prevPageUsr" class="btn-usr-action">Anterior</button>
+        <span id="pageDisplayUsr">Página 1</span>
+        <button id="nextPageUsr" class="btn-usr-action">Siguiente</button>
+    </div>
+
+    <div id="modalRegistrarUsr" popover class="usr-modal-box">
+        <div class="usr-modal-wrapper">
+            <h3>Registrar Usuario</h3>
+            <form id="formRegistrarUsr">
+                <div class="usr-form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="usr-form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="usr-form-group">
+                    <label>Contraseña</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="usr-form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="firstName" required>
+                </div>
+                <div class="usr-form-group">
+                    <label>Rol</label>
+                    <select name="role" required>
+                        <option value="CASHIER">CASHIER</option>
+                        <option value="ADMINISTRATOR">ADMINISTRATOR</option>
+                    </select>
+                </div>
+                <div class="usr-modal-actions">
+                    <button type="button" class="btn-usr-action close" popovertarget="modalRegistrarUsr" popovertargetaction="hide">Cancelar</button>
+                    <button type="submit" class="btn-usr-add">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalEditarUsr" popover class="usr-modal-box">
+        <div class="usr-modal-wrapper">
+            <h3>Editar Usuario</h3>
+            <form id="formEditarUsr">
+                <input type="hidden" name="id">
+                <div class="usr-form-group">
+                    <label>Username</label>
+                    <input type="text" name="username" required>
+                </div>
+                <div class="usr-form-group">
+                    <label>Email</label>
+                    <input type="email" name="email" required>
+                </div>
+                <div class="usr-form-group">
+                    <label>Nueva Contraseña</label>
+                    <input type="password" name="password" required>
+                </div>
+                <div class="usr-form-group">
+                    <label>Nombre</label>
+                    <input type="text" name="firstName" required>
+                </div>
+                <div class="usr-form-group">
+                    <label>Rol</label>
+                    <select name="role" required>
+                        <option value="CASHIER">CASHIER</option>
+                        <option value="ADMINISTRATOR">ADMINISTRATOR</option>
+                    </select>
+                </div>
+                <div class="usr-modal-actions">
+                    <button type="button" class="btn-usr-action close" popovertarget="modalEditarUsr" popovertargetaction="hide">Cancelar</button>
+                    <button type="submit" class="btn-usr-add">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
