@@ -1,121 +1,127 @@
-<section class="container-products">
-        <table>
-            <caption>Productos</caption>
-            <thead class="products-head">
+<section class="modulo-gestion-inv">
+    <div class="inv-header-flex">
+        <div class="inv-title-group">
+            <h2>Inventario de Productos</h2>
+            <p>Control de stock, precios y proveedores</p>
+        </div>
+        <button class="btn-inv-add" popovertarget="modalRegistrarInv">+ Nuevo Producto</button>
+    </div>
+
+    <div class="inv-grid-info">
+        <div class="inv-card">
+            <span class="inv-card-label">Productos en Sistema</span>
+            <span class="inv-card-value" id="count-inv">0</span>
+        </div>
+    </div>
+
+    <div class="inv-table-wrapper">
+        <table class="inv-tabla-data">
+            <thead>
             <tr>
                 <th>Código</th>
                 <th>Producto</th>
-                <th>Marca</th>
-                <th>Perecible</th>
+                <th>Categoría</th>
+                <th>P. Compra</th>
+                <th>P. Venta</th>
                 <th>Stock</th>
-                <th>P.Compra</th>
-                <th>Precio</th>
+                <th>Proveedor</th>
+                <th>Acciones</th>
             </tr>
             </thead>
-            <tbody class="products-body">
-                <tr>
-                    <th>PR0001</th>
-                    <td>Arroz</td>
-                    <td>Faraón</td>
-                    <td>No</td>
-                    <td>5</td>
-                    <td>3.00</td>
-                    <td>6.00</td>
-                </tr>
-                <tr>
-                    <th>PR0002</th>
-                    <td>Atún en trozos</td>
-                    <td>Primor</td>
-                    <td>No</td>
-                    <td>12</td>
-                    <td>4.50</td>
-                    <td>5.80</td>
-                </tr>
-                <tr>
-                    <th>PR0003</th>
-                    <td>Leche de Vaca 1L</td>
-                    <td>Gloria</td>
-                    <td>Sí</td>
-                    <td>24</td>
-                    <td>3.20</td>
-                    <td>4.50</td>
-                </tr>
-                <tr>
-                    <th>PR0004</th>
-                    <td>Detergente en Polvo</td>
-                    <td>Opal</td>
-                    <td>No</td>
-                    <td>8</td>
-                    <td>7.50</td>
-                    <td>10.20</td>
-                </tr>
-                <tr>
-                    <th>PR0005</th>
-                    <td>Aceite de Girasol 1L</td>
-                    <td>Primor</td>
-                    <td>No</td>
-                    <td>15</td>
-                    <td>7.50</td>
-                    <td>9.20</td>
-                </tr>
-                <tr>
-                    <th>PR0006</th>
-                    <td>Yogurt de Fresa 1kg</td>
-                    <td>Laive</td>
-                    <td>Sí</td>
-                    <td>10</td>
-                    <td>5.50</td>
-                    <td>7.80</td>
-                </tr>
-                <tr>
-                    <th>PR0007</th>
-                    <td>Spaghetti 500g</td>
-                    <td>Don Vittorio</td>
-                    <td>No</td>
-                    <td>30</td>
-                    <td>2.10</td>
-                    <td>3.50</td>
-                </tr>
-                <tr>
-                    <th>PR0008</th>
-                    <td>Café Instantáneo 200g</td>
-                    <td>Nescafé</td>
-                    <td>No</td>
-                    <td>20</td>
-                    <td>12.00</td>
-                    <td>15.50</td>
-                </tr>
-                <tr>
-                    <th>PR0009</th>
-                    <td>Inca Kola 3L</td>
-                    <td>Coca-Cola</td>
-                    <td>No</td>
-                    <td>18</td>
-                    <td>8.50</td>
-                    <td>11.00</td>
-                </tr>
-                <tr>
-                    <th>PR0010</th>
-                    <td>Mantequilla con sal</td>
-                    <td>Lactis</td>
-                    <td>Sí</td>
-                    <td>14</td>
-                    <td>4.20</td>
-                    <td>6.30</td>
-                </tr>
-            </tbody>
-            <tfoot class="products-foot">
-                <tr>
-                    <th scope="row" colspan="5">
-                        Mostrando del registro de <span>1</span> al <span>5</span> de un total de <span>15</span> datos
-                    </th>
-                    <th class="products-foot-button" scope="row" colspan="2">
-                        <div>
-                            <button type="button">Agregar Nuevo/a</button>
-                            <button type="button">Imprimir Reporte</button>
-                        </div>
-                    </th>
-                </tr>
-            </tfoot>
+            <tbody id="tbody-inventario"></tbody>
         </table>
+    </div>
+
+    <div class="inv-pagination">
+        <button id="prevPageInv" class="btn-inv-action">Anterior</button>
+        <span id="pageDisplayInv">Página 1</span>
+        <button id="nextPageInv" class="btn-inv-action">Siguiente</button>
+    </div>
+
+    <div id="modalRegistrarInv" popover class="inv-modal-box">
+        <div class="inv-modal-wrapper">
+            <h3>Registrar Producto</h3>
+            <form id="formRegistrarInv">
+                <div class="inv-form-row">
+                    <div class="inv-form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="inv-form-group">
+                        <label>Categoría</label>
+                        <input type="text" name="category" required>
+                    </div>
+                </div>
+                <div class="inv-form-row">
+                    <div class="inv-form-group">
+                        <label>Precio Compra</label>
+                        <input type="number" step="0.01" name="purchasePrice" required>
+                    </div>
+                    <div class="inv-form-group">
+                        <label>Precio Venta</label>
+                        <input type="number" step="0.01" name="salePrice" required>
+                    </div>
+                </div>
+                <div class="inv-form-row">
+                    <div class="inv-form-group">
+                        <label>Stock Inicial</label>
+                        <input type="number" name="stock" required>
+                    </div>
+                    <div class="inv-form-group">
+                        <label>Proveedor</label>
+                        <select name="supplierId" class="select-suppliers" required>
+                            <option value="">Seleccione proveedor</option>
+                        </select>
+                    </div>
+                </div>
+                <div class="inv-modal-actions">
+                    <button type="button" class="btn-inv-action close" popovertarget="modalRegistrarInv" popovertargetaction="hide">Cancelar</button>
+                    <button type="submit" class="btn-inv-add">Guardar</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="modalEditarInv" popover class="inv-modal-box">
+        <div class="inv-modal-wrapper">
+            <h3>Editar Producto</h3>
+            <form id="formEditarInv">
+                <input type="hidden" name="id">
+                <div class="inv-form-row">
+                    <div class="inv-form-group">
+                        <label>Nombre</label>
+                        <input type="text" name="name" required>
+                    </div>
+                    <div class="inv-form-group">
+                        <label>Categoría</label>
+                        <input type="text" name="category" required>
+                    </div>
+                </div>
+                <div class="inv-form-row">
+                    <div class="inv-form-group">
+                        <label>Precio Compra</label>
+                        <input type="number" step="0.01" name="purchasePrice" required>
+                    </div>
+                    <div class="inv-form-group">
+                        <label>Precio Venta</label>
+                        <input type="number" step="0.01" name="salePrice" required>
+                    </div>
+                </div>
+                <div class="inv-form-row">
+                    <div class="inv-form-group">
+                        <label>Stock</label>
+                        <input type="number" name="stock" required>
+                    </div>
+                    <div class="inv-form-group">
+                        <label>Proveedor</label>
+                        <select name="supplierId" class="select-suppliers" required></select>
+                    </div>
+                </div>
+                <div class="inv-modal-actions">
+                    <button type="button" class="btn-inv-action close" popovertarget="modalEditarInv" popovertargetaction="hide">Cancelar</button>
+                    <button type="submit" class="btn-inv-add">Guardar Cambios</button>
+                </div>
+            </form>
+        </div>
+    </div>
 </section>
