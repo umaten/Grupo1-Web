@@ -151,3 +151,50 @@
     text-align: right;
     margin-top: 0.5rem;
 }
+
+.sales-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: white;
+    border: 1px solid #ddd;
+    border-top: none;
+    border-radius: 0 0 0.5rem 0.5rem;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.1);
+    list-style: none;
+    max-height: 250px;
+    overflow-y: auto;
+    z-index: 100;
+}
+
+.sales-dropdown-item {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.75rem 1rem;
+    cursor: pointer;
+    border-bottom: 1px solid #f0f0f0;
+    transition: background 0.15s;
+}
+
+.sales-dropdown-item:hover {
+    background: #f0f7ff;
+}
+
+.dropdown-code {
+    font-size: 0.8rem;
+    color: #888;
+    min-width: 80px;
+}
+
+.dropdown-name {
+    flex: 1;
+    font-weight: 500;
+    color: #333;
+}
+
+.dropdown-price {
+    font-weight: 700;
+    color: midnightblue;
+}
