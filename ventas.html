@@ -1,47 +1,59 @@
 <div class="sales-wrapper">
     <div class="sales-search-group">
-        <input type="text" class="sales-input-main" placeholder="Código o Nombre del producto..." aria-label="Producto">
-        <input type="number" class="sales-input-qty" value="1" aria-label="Cantidad">
-        <button class="sales-btn-add">AGREGAR</button>
+        <input type="text" id="sales-input-search" class="sales-input-main" placeholder="Código o Nombre del producto..." aria-label="Producto">
+        <input type="number" id="sales-input-qty" class="sales-input-qty" value="1" min="1" aria-label="Cantidad">
+        <button id="sales-btn-add" class="sales-btn-add">AGREGAR</button>
     </div>
 
     <table class="sales-table">
         <caption class="sales-table-title">Caja - Nueva Venta (BodeSmart)</caption>
         <thead class="sales-thead">
-        <tr>
-            <th>Código</th>
-            <th>Producto</th>
-            <th>Cantidad</th>
-            <th>Precio Unit.</th>
-            <th>Subtotal</th>
-            <th class="sales-txt-center">ELIMINAR</th>
-        </tr>
+            <tr>
+                <th>Código</th>
+                <th>Producto</th>
+                <th>Cantidad</th>
+                <th>Precio Unit.</th>
+                <th>Subtotal</th>
+                <th class="sales-txt-center">ELIMINAR</th>
+            </tr>
         </thead>
-        <tbody class="sales-tbody">
-        <tr>
-            <td>ABR-001</td>
-            <td>Arroz Costeño (1 Kg)</td>
-            <td>1</td>
-            <td>S/ 3.50</td>
-            <td>S/ 3.50</td>
-            <td class="sales-txt-center">
-                <button class="sales-btn-remove" title="Eliminar fila">X</button>
-            </td>
-        </tr>
-        </tbody>
+        <tbody id="sales-tbody"></tbody>
         <tfoot class="sales-tfoot">
-        <tr class="sales-row-total">
-            <th colspan="4" class="sales-txt-right">TOTAL A PAGAR:</th>
-            <th colspan="2" class="sales-total-price">S/ 11.50</th>
-        </tr>
-        <tr class="sales-footer-actions">
-            <td colspan="6">
-                <div class="sales-action-container">
-                    <button class="sales-btn-submit">✅ CONFIRMAR VENTA</button>
-                    <button class="sales-btn-abort">🗑️ CANCELAR</button>
-                </div>
-            </td>
-        </tr>
+            <tr class="sales-row-total">
+                <th colspan="4" class="sales-txt-right">TOTAL A PAGAR:</th>
+                <th colspan="2" class="sales-total-price" id="sales-total">S/ 0.00</th>
+            </tr>
+            <tr class="sales-footer-actions">
+                <td colspan="6">
+                    <div class="sales-action-container">
+                        <button id="sales-btn-submit" class="sales-btn-submit">✅ CONFIRMAR VENTA</button>
+                        <button id="sales-btn-abort" class="sales-btn-abort">🗑️ CANCELAR</button>
+                    </div>
+                </td>
+            </tr>
         </tfoot>
     </table>
+
+    <!-- Comprobante -->
+    <div id="sales-comprobante" class="sales-comprobante" style="display:none;">
+        <div class="comprobante-box">
+            <h2>✅ Venta Registrada</h2>
+            <p id="comp-id"></p>
+            <p id="comp-fecha"></p>
+            <p id="comp-cliente"></p>
+            <table class="comp-tabla">
+                <thead>
+                    <tr>
+                        <th>Producto</th>
+                        <th>Cant.</th>
+                        <th>P.Unit</th>
+                        <th>Subtotal</th>
+                    </tr>
+                </thead>
+                <tbody id="comp-tbody"></tbody>
+            </table>
+            <p class="comp-total" id="comp-total"></p>
+            <button id="comp-btn-cerrar" class="sales-btn-add">Cerrar</button>
+        </div>
+    </div>
 </div>

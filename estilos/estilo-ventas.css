@@ -100,3 +100,54 @@
 .sales-btn-submit { background-color: #28a745; }
 .sales-btn-abort { background-color: #dc3545; }
 .sales-txt-center { text-align: center; }
+
+.sales-comprobante {
+    position: fixed;
+    inset: 0;
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    z-index: 999;
+}
+
+.comprobante-box {
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    width: 500px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+}
+
+.comprobante-box h2 {
+    margin-bottom: 1rem;
+    color: #28a745;
+}
+
+.comprobante-box p {
+    margin: 0.3rem 0;
+    color: #444;
+}
+
+.comp-tabla {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+}
+
+.comp-tabla th, .comp-tabla td {
+    padding: 0.6rem;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+    font-size: 0.9rem;
+}
+
+.comp-total {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: midnightblue;
+    text-align: right;
+    margin-top: 0.5rem;
+}
