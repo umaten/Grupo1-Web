@@ -198,3 +198,26 @@
     font-weight: 700;
     color: midnightblue;
 }
+
+.sales-row-subtotal th,
+.sales-row-igv th {
+    font-weight: 500;
+    color: #666;
+    font-size: var(--text-size-primary);
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+
+.sales-row-subtotal .sales-txt-right,
+.sales-row-igv .sales-txt-right {
+    text-align: right;
+}
+
+.sales-igv-price,
+.sales-subtotal-price {
+    color: #888;
+    font-size: var(--text-size-primary);
+    padding: 1rem;
+    border-bottom: 1px solid #eee;
+}
+

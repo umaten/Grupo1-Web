@@ -3,6 +3,7 @@ const URL_VENTAS    = "http://localhost:8080/sale";
 
 let busquedaTimeout = null;
 let carrito = []; // { productId, code, name, quantity, unitPrice, subtotal }
+const IGV = 0.18;
 
 export function initVentas() {
     carrito = [];
@@ -149,8 +150,13 @@ function renderizarCarrito() {
 }
 
 function actualizarTotal() {
-    const total = carrito.reduce((acc, i) => acc + i.subtotal, 0);
-    document.getElementById('sales-total').textContent = `S/ ${total.toFixed(2)}`;
+    const subtotal = carrito.reduce((acc, i) => acc + i.subtotal, 0);
+    const igv      = subtotal * IGV;
+    const total    = subtotal + igv;
+
+    document.getElementById('sales-subtotal').textContent = `S/ ${subtotal.toFixed(2)}`;
+    document.getElementById('sales-igv').textContent      = `S/ ${igv.toFixed(2)}`;
+    document.getElementById('sales-total').textContent    = `S/ ${total.toFixed(2)}`;
 }
 
 window.eliminarDelCarrito = (index) => {
