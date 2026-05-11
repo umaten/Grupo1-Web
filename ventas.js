@@ -203,10 +203,13 @@ async function confirmarVenta() {
 }
 
 function mostrarComprobante(venta) {
-    document.getElementById('comp-id').textContent     = `N° de Venta: ${venta.id}`;
-    document.getElementById('comp-fecha').textContent  = `Fecha: ${new Date(venta.date).toLocaleString()}`;
+    const subtotal = parseFloat(venta.total);
+    const igv      = subtotal * IGV;
+    const total    = subtotal + igv;
+
+    document.getElementById('comp-id').textContent      = `N° de Venta: ${venta.id}`;
+    document.getElementById('comp-fecha').textContent   = `Fecha: ${new Date(venta.date).toLocaleString()}`;
     document.getElementById('comp-cliente').textContent = `Cliente: ${venta.customerName}`;
-    document.getElementById('comp-total').textContent  = `TOTAL: S/ ${parseFloat(venta.total).toFixed(2)}`;
 
     const tbody = document.getElementById('comp-tbody');
     tbody.innerHTML = "";
@@ -220,6 +223,10 @@ function mostrarComprobante(venta) {
         `;
         tbody.appendChild(tr);
     });
+
+    document.getElementById('comp-subtotal').textContent = `Subtotal: S/ ${subtotal.toFixed(2)}`;
+    document.getElementById('comp-igv').textContent      = `IGV (18%): S/ ${igv.toFixed(2)}`;
+    document.getElementById('comp-total').textContent    = `TOTAL: S/ ${total.toFixed(2)}`;
 
     document.getElementById('sales-comprobante').style.display = 'flex';
 }
