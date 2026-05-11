@@ -4,6 +4,8 @@ import { initUser } from './user.js';
 import { initInventory } from './inventory.js';
 import { initDashboard} from "./inicio.js";
 import { initVentas } from './ventas.js';
+import { initReportes } from './reportes.js';
+
 
 const modulos = {
     "proveedores": initSupplier,
@@ -11,7 +13,8 @@ const modulos = {
     "usuarios": initUser,
     "inventario": initInventory,
     "inicio": initDashboard,
-    "ventas": initVentas
+    "ventas": initVentas,
+    "reportes": initReportes
 };
 
 document.addEventListener('DOMContentLoaded', () => {
