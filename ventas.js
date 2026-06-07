@@ -17,7 +17,7 @@ export function initVentas() {
             cerrarDropdown();
             return;
         }
-        // Espera 300ms antes de buscar para no hacer fetch en cada tecla
+        // Espera 300 ms antes de buscar para no hacer fetch en cada tecla
         busquedaTimeout = setTimeout(() => buscarSugerencias(termino), 300);
     };
 
@@ -30,8 +30,9 @@ export function initVentas() {
     document.getElementById('sales-btn-submit').onclick = confirmarVenta;
     document.getElementById('sales-btn-abort').onclick  = cancelarVenta;
     document.getElementById('comp-btn-cerrar').onclick  = cerrarComprobante;
+    document.getElementById('descargar-pdf').onclick = descargarPDF;
 
-    // Cerrar dropdown al hacer click fuera
+    // Cerrar dropdown al hacer clic fuera
     document.addEventListener('click', (e) => {
         if (!e.target.closest('.sales-search-group')) cerrarDropdown();
     });
@@ -241,4 +242,41 @@ function cancelarVenta() {
         carrito = [];
         renderizarCarrito();
     }
+}
+
+function descargarPDF() {
+    const elemento = document.querySelector('.comprobante-box');
+
+    if (!elemento) {
+        alert("No se encontró la boleta para descargar.");
+        return;
+    }
+
+    const opciones = {
+        margin:       15,
+        filename:     'Comprobante_Venta.pdf',
+        image:        { type: 'jpeg', quality: 0.98 },
+        html2canvas:  {
+            scale: 2,
+            logging: false,
+            scrollY: 0,
+            scrollX: 0
+        },
+        jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    };
+
+    const botonCerrar = document.getElementById('comp-btn-cerrar');
+    const botonPDF = document.getElementById('descargar-pdf');
+
+    if(botonCerrar) botonCerrar.style.display = 'none';
+    if(botonPDF) botonPDF.style.display = 'none';
+
+    html2pdf().set(opciones).from(elemento).save().then(() => {
+        if(botonCerrar) botonCerrar.style.display = 'inline-block';
+        if(botonPDF) botonPDF.style.display = 'inline-block';
+    }).catch(err => {
+        console.error("Error al generar el PDF: ", err);
+        if(botonCerrar) botonCerrar.style.display = 'inline-block';
+        if(botonPDF) botonPDF.style.display = 'inline-block';
+    });
 }
