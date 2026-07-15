@@ -1,5 +1,5 @@
-const URL_SUMMARY = "http://localhost:8080/api/reports/summary";
-const URL_HISTORY = "http://localhost:8080/api/reports/history";
+const URL_SUMMARY = "https://proyectoweb-xptf.onrender.com/api/reports/summary";
+const URL_HISTORY = "https://proyectoweb-xptf.onrender.com/api/reports/history";
 
 // Helper para agregar cabeceras de autorización con JWT
 function authHeaders() {

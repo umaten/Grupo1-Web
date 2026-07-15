@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:8080/supplier";
+const URL_API = "https://proyectoweb-xptf.onrender.com/supplier";
 let proveedoresData = [];
 let paginaActual = 1;
 const filasPorPagina = 15;

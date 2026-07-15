@@ -1,5 +1,5 @@
-const URL_PRODUCTOS = "http://localhost:8080/product";
-const URL_VENTAS = "http://localhost:8080/sale";
+const URL_PRODUCTOS = "https://proyectoweb-xptf.onrender.com/product";
+const URL_VENTAS = "https://proyectoweb-xptf.onrender.com/sale";
 
 let busquedaTimeout = null;
 let carrito = [];

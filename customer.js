@@ -1,4 +1,4 @@
-const URL_API = "http://localhost:8080/customer";
+const URL_API = "https://proyectoweb-xptf.onrender.com/customer";
 let clientesData = [];
 let paginaActual = 1;
 const filasPorPagina = 15;

@@ -1,4 +1,4 @@
-const API_BASE = "http://localhost:8080";
+const API_BASE = "https://proyectoweb-xptf.onrender.com";
 
 // Helper para agregar cabeceras de autorización con JWT
 function authHeaders() {

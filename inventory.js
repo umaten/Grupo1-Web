@@ -1,5 +1,5 @@
-const URL_PRODUCTOS = "http://localhost:8080/product";
-const URL_PROVEEDORES = "http://localhost:8080/supplier";
+const URL_PRODUCTOS = "https://proyectoweb-xptf.onrender.com/product";
+const URL_PROVEEDORES = "https://proyectoweb-xptf.onrender.com/supplier";
 let productosData = [];
 let paginaActual = 1;
 const filasPorPagina = 15;
