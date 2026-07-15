@@ -3,45 +3,61 @@ let clientesData = [];
 let paginaActual = 1;
 const filasPorPagina = 15;
 
+function authHeaders() {
+  const token = localStorage.getItem("token");
+  return {
+    "Content-Type": "application/json",
+    Authorization: "Bearer " + token,
+  };
+}
+
 export function initCustomer() {
-    listarClientes();
+  listarClientes();
 
-    const formRegistrar = document.getElementById('formRegistrarCust');
-    if (formRegistrar) formRegistrar.onsubmit = registrarCliente;
+  const formRegistrar = document.getElementById("formRegistrarCust");
+  if (formRegistrar) formRegistrar.onsubmit = registrarCliente;
 
-    const formEditar = document.getElementById('formEditarCust');
-    if (formEditar) formEditar.onsubmit = actualizarCliente;
+  const formEditar = document.getElementById("formEditarCust");
+  if (formEditar) formEditar.onsubmit = actualizarCliente;
 
-    document.getElementById('prevPageCust').onclick = () => cambiarPagina(-1);
-    document.getElementById('nextPageCust').onclick = () => cambiarPagina(1);
+  document.getElementById("prevPageCust").onclick = () => cambiarPagina(-1);
+  document.getElementById("nextPageCust").onclick = () => cambiarPagina(1);
 }
 
 async function listarClientes() {
-    try {
-        const res = await fetch(URL_API);
-        clientesData = await res.json();
+  try {
+    const res = await fetch(URL_API, {
+      headers: authHeaders(),
+    });
 
-        const countElem = document.getElementById('count-cust');
-        if (countElem) countElem.textContent = clientesData.length;
-
-        renderizarTabla();
-    } catch (e) {
-        console.error(e);
+    if (!res.ok) {
+      console.error("Error:", res.status);
+      return;
     }
+
+    clientesData = await res.json();
+
+    const countElem = document.getElementById("count-cust");
+    if (countElem) countElem.textContent = clientesData.length;
+
+    renderizarTabla();
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 function renderizarTabla() {
-    const tbody = document.getElementById('tbody-clientes');
-    if (!tbody) return;
+  const tbody = document.getElementById("tbody-clientes");
+  if (!tbody) return;
 
-    const inicio = (paginaActual - 1) * filasPorPagina;
-    const fin = inicio + filasPorPagina;
-    const itemsPaginados = clientesData.slice(inicio, fin);
+  const inicio = (paginaActual - 1) * filasPorPagina;
+  const fin = inicio + filasPorPagina;
+  const itemsPaginados = clientesData.slice(inicio, fin);
 
-    tbody.innerHTML = "";
-    itemsPaginados.forEach(c => {
-        const tr = document.createElement('tr');
-        tr.innerHTML = `
+  tbody.innerHTML = "";
+  itemsPaginados.forEach((c) => {
+    const tr = document.createElement("tr");
+    tr.innerHTML = `
             <td>${c.code}</td>
             <td>${c.fullName}</td>
             <td>
@@ -51,79 +67,103 @@ function renderizarTabla() {
                 </div>
             </td>
         `;
-        tbody.appendChild(tr);
-    });
+    tbody.appendChild(tr);
+  });
 
-    document.getElementById('pageDisplayCust').textContent = `Página ${paginaActual}`;
-    document.getElementById('prevPageCust').disabled = paginaActual === 1;
-    document.getElementById('nextPageCust').disabled = fin >= clientesData.length;
+  document.getElementById("pageDisplayCust").textContent =
+    `Página ${paginaActual}`;
+  document.getElementById("prevPageCust").disabled = paginaActual === 1;
+  document.getElementById("nextPageCust").disabled = fin >= clientesData.length;
 }
 
 function cambiarPagina(direccion) {
-    paginaActual += direccion;
-    renderizarTabla();
+  paginaActual += direccion;
+  renderizarTabla();
 }
 
 async function registrarCliente(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const datos = {
-        firstName: formData.get('firstName'),
-        lastName: formData.get('lastName')
-    };
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const datos = {
+    firstName: formData.get("firstName"),
+    lastName: formData.get("lastName"),
+  };
 
-    const res = await fetch(URL_API, {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(datos)
-    });
+  const res = await fetch(URL_API, {
+    method: "POST",
+    headers: authHeaders(),
+    body: JSON.stringify(datos),
+  });
 
-    if (res.ok) {
-        e.target.reset();
-        document.getElementById('modalRegistrarCust').hidePopover();
-        listarClientes();
-    }
+  if (!res.ok) {
+    console.error("Error:", res.status);
+    return;
+  }
+
+  e.target.reset();
+  document.getElementById("modalRegistrarCust").hidePopover();
+  listarClientes();
 }
 
 window.prepararEdicionCust = async (id) => {
-    const res = await fetch(`${URL_API}/${id}`);
-    const c = await res.json();
-    const form = document.getElementById('formEditarCust');
+  const res = await fetch(`${URL_API}/${id}`, {
+    headers: authHeaders(),
+  });
 
-    form.querySelector('[name="id"]').value = c.id;
+  if (!res.ok) {
+    console.error("Error:", res.status);
+    return;
+  }
 
-    const nombres = c.fullName.split(' ');
-    form.querySelector('[name="firstName"]').value = nombres[0] || "";
-    form.querySelector('[name="lastName"]').value = nombres.slice(1).join(' ') || "";
+  const c = await res.json();
+  const form = document.getElementById("formEditarCust");
 
-    document.getElementById('modalEditarCust').showPopover();
+  form.querySelector('[name="id"]').value = c.id;
+
+  const nombres = c.fullName.split(" ");
+  form.querySelector('[name="firstName"]').value = nombres[0] || "";
+  form.querySelector('[name="lastName"]').value =
+    nombres.slice(1).join(" ") || "";
+
+  document.getElementById("modalEditarCust").showPopover();
 };
 
 async function actualizarCliente(e) {
-    e.preventDefault();
-    const formData = new FormData(e.target);
-    const id = formData.get('id');
+  e.preventDefault();
+  const formData = new FormData(e.target);
+  const id = formData.get("id");
 
-    const datos = {
-        firstName: formData.get('firstName'),
-        lastname: formData.get('lastName')
-    };
+  const datos = {
+    firstName: formData.get("firstName"),
+    lastname: formData.get("lastName"),
+  };
+  const res = await fetch(`${URL_API}/${id}`, {
+    method: "PUT",
+    headers: authHeaders(),
+    body: JSON.stringify(datos),
+  });
 
-    const res = await fetch(`${URL_API}/${id}`, {
-        method: 'PUT',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify(datos)
-    });
+  if (!res.ok) {
+    console.error("Error:", res.status);
+    return;
+  }
 
-    if (res.ok) {
-        document.getElementById('modalEditarCust').hidePopover();
-        listarClientes();
-    }
+  document.getElementById("modalEditarCust").hidePopover();
+  listarClientes();
 }
 
 window.eliminarCliente = async (id) => {
-    if (confirm("¿Eliminar cliente?")) {
-        await fetch(`${URL_API}/${id}`, { method: 'DELETE' });
-        listarClientes();
+  if (confirm("¿Eliminar cliente?")) {
+    const res = await fetch(`${URL_API}/${id}`, {
+      method: "DELETE",
+      headers: authHeaders(),
+    });
+
+    if (!res.ok) {
+      console.error("Error:", res.status);
+      return;
     }
+
+    listarClientes();
+  }
 };

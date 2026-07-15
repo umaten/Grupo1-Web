@@ -6,11 +6,19 @@
         </div>
 
         <div class="inv-search-container">
-            <input type="text" id="inputSearchInv" placeholder="Buscar por código o nombre...">
-            <button id="btnSearchInv" class="btn-inv-action search">Buscar</button>
+            <input
+                type="text"
+                id="inputSearchInv"
+                placeholder="Buscar por código o nombre..."
+            />
+            <button id="btnSearchInv" class="btn-inv-action search">
+                Buscar
+            </button>
         </div>
 
-        <button class="btn-inv-add" popovertarget="modalRegistrarInv">+ Nuevo Producto</button>
+        <button class="btn-inv-add" popovertarget="modalRegistrarInv">
+            + Nuevo Producto
+        </button>
     </div>
 
     <div class="inv-grid-info">
@@ -23,16 +31,16 @@
     <div class="inv-table-wrapper">
         <table class="inv-tabla-data">
             <thead>
-            <tr>
-                <th>Código</th>
-                <th>Producto</th>
-                <th>Categoría</th>
-                <th>P. Compra</th>
-                <th>P. Venta</th>
-                <th>Stock</th>
-                <th>Proveedor</th>
-                <th>Acciones</th>
-            </tr>
+                <tr>
+                    <th>Código</th>
+                    <th>Producto</th>
+                    <th>Categoría</th>
+                    <th>P. Compra</th>
+                    <th>P. Venta</th>
+                    <th>Stock</th>
+                    <th>Proveedor</th>
+                    <th>Acciones</th>
+                </tr>
             </thead>
             <tbody id="tbody-inventario"></tbody>
         </table>
@@ -51,37 +59,58 @@
                 <div class="inv-form-row">
                     <div class="inv-form-group">
                         <label>Nombre</label>
-                        <input type="text" name="name" required>
+                        <input type="text" name="name" required />
                     </div>
                     <div class="inv-form-group">
                         <label>Categoría</label>
-                        <input type="text" name="category" required>
+                        <input type="text" name="category" required />
                     </div>
                 </div>
                 <div class="inv-form-row">
                     <div class="inv-form-group">
                         <label>Precio Compra</label>
-                        <input type="number" step="0.01" name="purchasePrice" required>
+                        <input
+                            type="number"
+                            step="0.01"
+                            name="purchasePrice"
+                            required
+                        />
                     </div>
                     <div class="inv-form-group">
                         <label>Precio Venta</label>
-                        <input type="number" step="0.01" name="salePrice" required>
+                        <input
+                            type="number"
+                            step="0.01"
+                            name="salePrice"
+                            required
+                        />
                     </div>
                 </div>
                 <div class="inv-form-row">
                     <div class="inv-form-group">
                         <label>Stock Inicial</label>
-                        <input type="number" name="stock" required>
+                        <input type="number" name="stock" required />
                     </div>
                     <div class="inv-form-group">
                         <label>Proveedor</label>
-                        <select name="supplierId" class="select-suppliers" required>
+                        <select
+                            name="supplierId"
+                            class="select-suppliers"
+                            required
+                        >
                             <option value="">Seleccione proveedor</option>
                         </select>
                     </div>
                 </div>
                 <div class="inv-modal-actions">
-                    <button type="button" class="btn-inv-action close" popovertarget="modalRegistrarInv" popovertargetaction="hide">Cancelar</button>
+                    <button
+                        type="button"
+                        class="btn-inv-action close"
+                        popovertarget="modalRegistrarInv"
+                        popovertargetaction="hide"
+                    >
+                        Cancelar
+                    </button>
                     <button type="submit" class="btn-inv-add">Guardar</button>
                 </div>
             </form>
@@ -92,40 +121,63 @@
         <div class="inv-modal-wrapper">
             <h3>Editar Producto</h3>
             <form id="formEditarInv">
-                <input type="hidden" name="id">
+                <input type="hidden" name="id" />
                 <div class="inv-form-row">
                     <div class="inv-form-group">
                         <label>Nombre</label>
-                        <input type="text" name="name" required>
+                        <input type="text" name="name" required />
                     </div>
                     <div class="inv-form-group">
                         <label>Categoría</label>
-                        <input type="text" name="category" required>
+                        <input type="text" name="category" required />
                     </div>
                 </div>
                 <div class="inv-form-row">
                     <div class="inv-form-group">
                         <label>Precio Compra</label>
-                        <input type="number" step="0.01" name="purchasePrice" required>
+                        <input
+                            type="number"
+                            step="0.01"
+                            name="purchasePrice"
+                            required
+                        />
                     </div>
                     <div class="inv-form-group">
                         <label>Precio Venta</label>
-                        <input type="number" step="0.01" name="salePrice" required>
+                        <input
+                            type="number"
+                            step="0.01"
+                            name="salePrice"
+                            required
+                        />
                     </div>
                 </div>
                 <div class="inv-form-row">
                     <div class="inv-form-group">
                         <label>Stock</label>
-                        <input type="number" name="stock" required>
+                        <input type="number" name="stock" required />
                     </div>
                     <div class="inv-form-group">
                         <label>Proveedor</label>
-                        <select name="supplierId" class="select-suppliers" required></select>
+                        <select
+                            name="supplierId"
+                            class="select-suppliers"
+                            required
+                        ></select>
                     </div>
                 </div>
                 <div class="inv-modal-actions">
-                    <button type="button" class="btn-inv-action close" popovertarget="modalEditarInv" popovertargetaction="hide">Cancelar</button>
-                    <button type="submit" class="btn-inv-add">Guardar Cambios</button>
+                    <button
+                        type="button"
+                        class="btn-inv-action close"
+                        popovertarget="modalEditarInv"
+                        popovertargetaction="hide"
+                    >
+                        Cancelar
+                    </button>
+                    <button type="submit" class="btn-inv-add">
+                        Guardar Cambios
+                    </button>
                 </div>
             </form>
         </div>

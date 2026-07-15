@@ -1,34 +1,48 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="estilos/style.css">
-    <link rel="stylesheet" href="estilos/estilo-login.css">
-    <title>Login</title>
-</head>
-<body>
-    <div class="carta">
-        <div class="contenedor-logo" style=" display: flex; margin-left: 12px; width: 10rem;">
-        <img src="https://gesnet.mundocode.com/web/assets/images/acceso.png" alt="gatito">
+    <head>
+        <meta charset="UTF-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <link rel="stylesheet" href="estilos/style.css" />
+        <link rel="stylesheet" href="estilos/estilo-login.css" />
+        <title>Login</title>
+    </head>
+    <body>
+        <div class="carta">
+            <div
+                class="contenedor-logo"
+                style="display: flex; margin-left: 12px; width: 10rem"
+            >
+                <img
+                    src="https://gesnet.mundocode.com/web/assets/images/acceso.png"
+                    alt="gatito"
+                />
+            </div>
+            <form action="" id="formularioLogin">
+                <div class="input-user">
+                    <p>Usuario</p>
+                    <label>
+                        <input
+                            type="text"
+                            id="username"
+                            placeholder="Ingrese su usuario"
+                        />
+                    </label>
+                </div>
+                <div class="input-user">
+                    <p>Contraseña</p>
+                    <label>
+                        <input
+                            type="password"
+                            id="password"
+                            placeholder="Ingrese su contraseña"
+                        />
+                    </label>
+                </div>
+                <div id="login-error" class="login-error-msg"></div>
+                <button type="submit">INICIAR SESIÓN</button>
+            </form>
         </div>
-        <form action="" id="formularioLogin">
-            <div class="input-user">
-                <p>Usuario</p>
-                <label>
-                    <input type="text" id="username" placeholder="Ingrese su usuario">
-                </label>
-            </div>
-            <div class="input-user">
-                <p>Contraseña</p>
-                <label>
-                    <input type="password" id="password" placeholder="Ingrese su contraseña">
-                </label>
-            </div>
-            <div id="login-error" class="login-error-msg"></div>
-            <button type="submit">INICIAR SESIÓN</button>
-        </form>
-    </div>
-    <script src="login.js"></script>
-</body>
+        <script src="login.js"></script>
+    </body>
 </html>
